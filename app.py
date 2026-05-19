@@ -54,12 +54,31 @@ if dark_mode:
 else:
     css = """
     <style>
-        .main-header { color: #1E3A5F; text-align: center; }
-        .sub-header { text-align: center; }
-        .result-box.fake { background: #ffe0e0; }
-        .result-box.real { background: #e0ffe0; }
-        .model-card { background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+        .stApp { background-color: #ffffff; }
+        body, .stMarkdown, .stSubheader, h1, h2, h3, h4, h5, h6, p, li, span {
+            color: #111111 !important;
+        }
+        .main-header { color: #1E3A5F !important; text-align: center; }
+        .sub-header { color: #333333 !important; text-align: center; }
+        .result-box.fake { background: #ffe0e0; border-left: 5px solid #ff4444; }
+        .result-box.real { background: #e0ffe0; border-left: 5px solid #44aa44; }
+        .model-card { background: #f5f5f5; box-shadow: 0 1px 4px rgba(0,0,0,0.1); color: #111; }
+        .model-card h4, .model-card p, .model-card small { color: #111 !important; }
+        .stTextArea textarea, .stTextInput input {
+            background-color: #ffffff !important;
+            color: #111 !important;
+            border: 1px solid #ccc !important;
+        }
+        .stTextArea textarea::placeholder, .stTextInput input::placeholder {
+            color: #888 !important;
+        }
+        .stButton button { background-color: #1E3A5F; color: white; }
+        .stButton button[kind="secondary"] { background-color: #e0e0e0; color: #111; }
         .stDivider, hr { display: none !important; }
+        [data-testid="stSidebar"] { background-color: #f0f2f6; }
+        [data-testid="stSidebar"] * { color: #111 !important; }
+        .stCaption, footer, .caption { color: #555 !important; }
+        .stAlert { background-color: #fff3cd !important; color: #856404 !important; }
     </style>
     """
 st.markdown(css, unsafe_allow_html=True)

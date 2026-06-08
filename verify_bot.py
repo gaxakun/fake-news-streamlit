@@ -35,8 +35,10 @@ st.caption("Cross-references statements against real-time web documentation usin
 claim = st.text_area("What claim would you like to verify?", placeholder="e.g., There was a kidnapping incident in Nigeria today", height=100)
 
 if st.button("Check Claim", type="primary", use_container_width=True): # use_container_width makes the button fill the screen nicely on mobile!
-    if not GEMINI_API_KEY or not SERPER_API_KEY:
-        st.error("⚠️ API keys are missing! Check your config.py file configuration.")
+    else:
+        with st.spinner("Searching the internet for breaking news..."):
+            # We let it pass directly to the search function
+            sources = search_google_live(claim)
     elif not claim.strip():
         st.warning("Please type a claim first.")
     else:

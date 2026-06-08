@@ -34,15 +34,13 @@ st.caption("Cross-references statements against real-time web documentation usin
 # text_area auto-adjusts size on mobile views
 claim = st.text_area("What claim would you like to verify?", placeholder="e.g., There was a kidnapping incident in Nigeria today", height=100)
 
-if st.button("Check Claim", type="primary", use_container_width=True): # use_container_width makes the button fill the screen nicely on mobile!
-    else:
-        with st.spinner("Searching the internet for breaking news..."):
-            # We let it pass directly to the search function
-            sources = search_google_live(claim)
-    elif not claim.strip():
+if st.button("Check Claim", type="primary", use_container_width=True):
+    if not claim.strip():
         st.warning("Please type a claim first.")
     else:
         with st.spinner("Searching the internet for breaking news..."):
+            sources = search_google_live(claim)
+        # Then do something with 'sources' (like call Gemini analysis)
             sources = search_google_live(claim)
             
             if not sources:
